@@ -1,0 +1,30 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<osm version='0.6' upload='true' generator='JOSM'>
+  <node id='-4' action='modify' visible='true' lat='50.722137440298205' lon='7.061636158928462'>
+    <tag k='indoor' v='metadata' />
+    <tag k='indoor_scale' v='0.4' />
+    <tag k='north_angle' v='60' />
+  </node>
+  <node id='-794' action='modify' visible='true' lat='51.25567034941198' lon='6.757231408520558' />
+  <node id='-792' action='modify' visible='true' lat='51.25498038781923' lon='6.756741436298513' />
+  <node id='-791' action='modify' visible='true' lat='51.25547869445262' lon='6.755883984909925' />
+  <node id='-10' action='modify' visible='true' lat='51.25417504040519' lon='6.748673467159792' />
+  <node id='-8' action='modify' visible='true' lat='51.25400181445516' lon='6.748673467159792' />
+  <node id='-6' action='modify' visible='true' lat='51.25400823024272' lon='6.748909240339734' />
+  <node id='-4' action='modify' visible='true' lat='51.25418787193108' lon='6.748909240339734' />
+  <way id='-793' action='modify' visible='true'>
+    <nd ref='-791' />
+    <nd ref='-792' />
+    <nd ref='-794' />
+    <nd ref='-791' />
+    <tag k='indoor' v='Gang' />
+  </way>
+  <way id='-394' action='modify' visible='true'>
+    <nd ref='-10' />
+    <nd ref='-8' />
+    <nd ref='-6' />
+    <nd ref='-4' />
+    <nd ref='-10' />
+    <tag k='indoor' v='Gang' />
+  </way>
+</osm>

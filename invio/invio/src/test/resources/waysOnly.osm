@@ -1,0 +1,20 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<osm version='0.6' upload='true' generator='JOSM'>
+    <node id='-35' action='modify' visible='true' lat='1.532453456344354323' lon='20.452435234346563454' />
+    <node id='-34' action='modify' visible='true' lat='0.002245788209717387' lon='-0.011902677514583659' />
+    <node id='-32' action='modify' visible='true' lat='-0.015091696598705377' lon='0.030407972367445798' />
+    <node id='-30' action='modify' visible='true' lat='-0.037459744679101376' lon='-0.003817899575079665' />
+    <node id='-29' action='modify' visible='true' lat='-0.022907039134800522' lon='-0.023585776208137443' />
+    <way id='-31' action='modify' visible='true'>
+        <nd ref='-29' />
+        <nd ref='-30' />
+        <nd ref='-34' />
+        <nd ref='-35' />
+        <tag k='indoor' v='Gang' />
+    </way>
+    <way id='-36' action='modify' visible='true'>
+        <nd ref='-30' />
+        <nd ref='-32' />
+        <tag k='indoor' v='Gang' />
+    </way>
+</osm>

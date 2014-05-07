@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">admin</string>
+
+    <string name="dialog_fingerprint_title">Fingerprint:</string>
+    <string name="dialog_fingerprint_button_ok">OK</string>
+    <string name="dialog_fingerprint_button_delete">Löschen</string>
+
+    <string name="create_fingerprint_button">Fingerprint erstellen</string>
+
+    <string name="menu_dev">Settings</string>
+    <string name="menu_track_me">Toggle Tracking</string>
+    <string name="menu_toggle_motion_sensor">Toggle Motion Sensor</string>
+    <string name="menu_upload_fingerprints">Fingerprints speichern</string>
+
+    <!-- Map Matching menu -->
+    <string name="menu_map_matching">Map Matching</string>
+    <string name="menu_toggle_wayoverlay">wayoverlay</string>
+    <string name="menu_map_matching_none">no matching</string>
+    <string name="menu_map_matching_simpleWaySnap">simple way snap</string>
+
+    <!-- Outlier debug menu -->
+    <string name="menu_outlier">Outlier</string>
+    <string name="menu_outlier_no_detection">no detection</string>
+    <string name="menu_outlier_cme">cme (2)</string>
+    <string name="menu_outlier_plasmona">plasmona</string>
+
+    <!-- Statistic filter debug menu -->
+    <string name="menu_filter">Filter</string>
+    <string name="menu_filter_no_filter">no filter</string>
+    <string name="menu_filter_median">median</string>
+    <string name="menu_filter_average">average</string>
+
+    <!-- VERSION TEXT ELEMENTS -->
+    <string name="version_title">Version</string>
+    <string name="version">0.7.18</string>
+    <string name="build_id">2014-04-28_16-54-58</string>
+    <string name="close_version_dialog">Schließen</string>
+
+    <string name="actions_version">Version</string>
+
+    <!-- Preferences Menu and array values -->
+    <string name="pref_mapMatching">Map Matching</string>
+    <string name="pref_mapMatching_toggle_title">Map Matching</string>
+    <string name="pref_mapMatching_toggle_summary">Enable simple way snap map matching</string>
+    <string name="pref_mapMatching_showWayOverlay">Show ways</string>
+    <string name="key_pref_mapMatching_showWayOverlay">prefShowWayOverlay</string>
+    <string name="key_pref_mapMatching_toggle">prefUseSimleWaySnap</string>
+
+    <string name="pref_outlierDetection">Outlier Detection</string>
+    <string name="key_pref_outlierEnabled">prefOutlierDetectionEnabled</string>
+    <string name="pref_outlierEnabled_title">Detection</string>
+    <string name="pref_outlierEnabled_summary">Enable or disable outlier detection</string>
+    <string name="key_pref_outlierAlgorithmList">prefOutlierAlgorithmList</string>
+    <string name="pref_outlierAlgorithmList_title">Elimination Algorithm</string>
+    <string name="pref_outlierAlgorithmList_summary">Choosen algorithm</string>
+    <string name="pref_outlierAlgorithmList_dialogTitle">Choose the outlier elimination algorithm</string>
+    <string name="outlierAlgorithmCME2">cme2</string>
+    <string name="outlierAlgorithmPlasmona">deadReckoning</string>
+
+    <string name="pref_filter">Position Filter</string>
+    <string name="key_pref_filteringEnabled">prefEnableFiltering</string>
+    <string name="pref_filteringEnabled_title">Filter</string>
+    <string name="pref_filteringEnabled_summary">Enable or disable position filter</string>
+    <string name="filterAlgorithmMedian">filterMedian</string>
+    <string name="filterAlgorithmAverage">filterAverage</string>
+    <string name="key_pref_filterAlgorithmList">prefFilterAlgorithmList</string>
+    <string name="pref_filterAlgorithmList_title">Filter Algorithm</string>
+    <string name="pref_filterAlgorithmList_summary">Choose the filter algorithm</string>
+
+    <string name="settings_switch_general_ON">ON</string>
+    <string name="settings_switch_general_OFF">OFF</string>
+
+    <string name="menu_showMapData">Map Data</string>
+
+    <string name="pref_localization">Localization</string>
+    <string name="key_pref_localizationMethodList">prefLocalisationMethodList</string>
+    <string name="localizationMethodParticlefilter">particleFilter</string>
+    <string name="localizationMethodWifi">wifi</string>
+    <string name="localizationMethodDeadreckoning">deadReckoning</string>
+    <string name="pref_localizationEnabled_title">Localization</string>
+    <string name="pref_localizationMethodList_title">Localization Method</string>
+    <string name="pref_localizationMethodList_summary">Choosen localization method</string>
+    <string name="pref_localizationMethodList_dialogTitle">Choose the localization method</string>
+
+    <string name="key_pref_deadReckoning_lowPassToggle">prefLowPassToggle</string>
+    <string name="pref_deadReckoning_lowPassToggle_title">Lowpass Filter</string>
+
+    <string name="key_pref_showparticles">showParticles</string>
+    <string name="pref_showparticles_title">Show Particles</string>
+
+</resources>

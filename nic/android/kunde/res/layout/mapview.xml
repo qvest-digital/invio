@@ -1,0 +1,18 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                android:id="@+id/maplayout"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+    <!--
+    	Dies ist nur ein PLatzhalter für die ID der eigentlichen MapView
+    	Die MapView wird später programatisch hinzugefügt.
+     -->
+
+    <org.osmdroid.views.MapView
+            xmlns:android="http://schemas.android.com/apk/res/android"
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:id="@+id/osmmapview">
+    </org.osmdroid.views.MapView>
+    <include layout="@layout/floorbuttons"
+             android:layout_alignTop="@+id/osmmapview" android:layout_alignRight="@+id/osmmapview"/>
+</RelativeLayout>

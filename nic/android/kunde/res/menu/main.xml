@@ -1,0 +1,8 @@
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item android:id="@+id/feedback_menu"
+          android:title="@string/feedback_menu" />
+    <item android:id="@+id/schedule_menu"
+          android:title="@string/schedule_menu" />
+    <item android:id="@+id/imprint_menu"
+          android:title="@string/imprint_menu" />
+</menu>

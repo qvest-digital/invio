@@ -1,0 +1,15 @@
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item android:id="@+id/track_me"
+          android:title="@string/menu_track_me" />
+    <item android:id="@+id/upload_fingerprints"
+          android:title="@string/menu_upload_fingerprints" />
+    <item android:id="@+id/menu_showMapData"
+          android:title="@string/menu_showMapData" />
+    <item
+          android:id="@+id/show_version"
+          android:title="@string/actions_version"
+          android:showAsAction="never"/>
+    <item android:id="@+id/dev_submenu"
+          android:title="@string/menu_dev">
+    </item>
+</menu>

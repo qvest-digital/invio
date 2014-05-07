@@ -1,0 +1,55 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<osm version='0.6' upload='true' generator='JOSM'>
+      <node id='-27' action='modify' visible='true' lat='0.016843411334633067' lon='0.008309416378105573'>
+            <tag k='EAN-13' v='0000111122223' />
+            <tag k='name' v='Rubbellos' />
+            <tag k='price' v='100' />
+      </node>
+      <node id='-26' action='modify' visible='true' lat='0.010016215366909357' lon='-0.0025601985597406367'>
+            <tag k='EAN-13' v='1234567890123' />
+            <tag k='name' v='Brot' />
+            <tag k='price' v='219' />
+      </node>
+      <node id='-18' action='modify' visible='true' lat='0.004985649820565272' lon='-0.0027398616165645404' />
+      <node id='-4' action='modify' visible='true' lat='50.722137440298205' lon='7.061636158928462'>
+            <tag k='indoor' v='north' />
+            <tag k='namespace_group_name' v='tarent AG' />
+            <tag k='namespace_map_name' v='1. Obergeschoss' />
+            <tag k='namespace_short_name' v='1' />
+            <tag k='indoor_scale' v='2.55' />
+            <tag k='north_angle' v='-90' />
+      </node>
+      <node id='-20' action='modify' visible='true' lat='-1.347472926241651E-4' lon='-0.0034585138438601574' />
+      <node id='-16' action='modify' visible='true' lat='0.012711161166014917' lon='-0.007141606508750195' />
+      <node id='-15' action='modify' visible='true' lat='0.007860258711383942' lon='-0.01828071603183226' />
+      <node id='-25' action='modify' visible='true' lat='0.02277229185287583' lon='-0.009207731662225094'>
+            <tag k='EAN-13' v='4102610005744' />
+            <tag k='name' v='Vulkanpark-Quelle Classic 0,7L' />
+            <tag k='price' v='49' />
+      </node>
+      <node id='-24' action='modify' visible='true' lat='0.019538357050917367' lon='-0.01819088450342031'>
+            <tag k='EAN-13' v='1234567890123' />
+            <tag k='name' v='Brot' />
+            <tag k='price' v='219' />
+      </node>
+      <node id='-13' action='modify' visible='true' lat='0.007141606490251521' lon='0.012531498213467326' />
+      <node id='-11' action='modify' visible='true' lat='0.011992508955423628' lon='0.014417960310118319' />
+      <node id='-9' action='modify' visible='true' lat='0.020257009234872305' lon='0.010285710003168521' />
+      <node id='-6' action='modify' visible='true' lat='0.021065492938006643' lon='-0.005704302054158962' />
+      <node id='-3' action='modify' visible='true' lat='0.015406106936998877' lon='-0.020616335770543018' />
+      <way id='-17' action='modify' visible='true'>
+            <nd ref='-15' />
+            <nd ref='-16' />
+            <nd ref='-18' />
+            <nd ref='-20' />
+            <tag k='indoor' v='Gang' />
+      </way>
+      <way id='-7' action='modify' visible='true'>
+            <nd ref='-3' />
+            <nd ref='-6' />
+            <nd ref='-9' />
+            <nd ref='-11' />
+            <nd ref='-13' />
+            <tag k='indoor' v='Gang' />
+      </way>
+</osm>

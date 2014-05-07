@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+<merge xmlns:android="http://schemas.android.com/apk/res/android">
+    <Button
+            style="?android:attr/buttonStyleSmall"
+            android:visibility="invisible"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="0"
+            android:onClick="onFloorButtonClick"
+            android:id="@+id/button_floor0" android:layout_alignTop="@+id/osmmapview"
+            android:layout_alignRight="@+id/osmmapview" android:layout_marginTop="10dp"
+            android:layout_alignLeft="@+id/button_autodetect"/>
+    <Button
+            style="?android:attr/buttonStyleSmall"
+            android:visibility="invisible"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="1"
+            android:onClick="onFloorButtonClick"
+            android:id="@+id/button_floor1" android:layout_below="@+id/button_floor0"
+            android:layout_alignParentRight="true"
+            android:layout_alignLeft="@+id/button_autodetect"/>
+    <Button
+            style="?android:attr/buttonStyleSmall"
+            android:visibility="invisible"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="2"
+            android:onClick="onFloorButtonClick"
+            android:id="@+id/button_floor2" android:layout_below="@+id/button_floor1"
+            android:layout_alignRight="@+id/osmmapview"
+            android:layout_alignLeft="@+id/button_autodetect"/>
+    <Button
+            style="?android:attr/buttonStyleSmall"
+            android:visibility="invisible"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="3"
+            android:onClick="onFloorButtonClick"
+            android:id="@+id/button_floor3" android:layout_below="@+id/button_floor2" android:layout_alignRight="@+id/osmmapview"
+            android:layout_alignLeft="@+id/button_autodetect"/>
+    <Button
+            style="?android:attr/buttonStyleSmall"
+            android:visibility="invisible"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="4"
+            android:onClick="onFloorButtonClick"
+            android:id="@+id/button_floor4" android:layout_below="@+id/button_floor3" android:layout_alignRight="@+id/osmmapview"
+            android:layout_alignLeft="@+id/button_autodetect"/>
+    <ImageButton
+            style="?android:attr/buttonStyleSmall"
+            android:visibility="invisible"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Detect"
+            android:onClick="onFloorButtonClick"
+            android:id="@+id/button_autodetect" android:layout_below="@+id/button_floor4" android:layout_alignRight="@+id/osmmapview"
+            android:background="@android:drawable/ic_menu_mylocation"/>
+
+
+</merge>

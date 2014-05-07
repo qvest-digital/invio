@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="map_provider_url_schema">
+        http://172.26.4.51:8080/maps/{mapname}/tiles/{zoom}/{x}/{y}{ending}
+    </string>
+
+    <string name="map_tile_size_px">256</string>
+    <string name="map_default_name">JOSMTest</string>
+    <string name="map_file_ending">.jpg</string>
+    <string name="map_zoom_min">0</string>
+    <string name="map_zoom_max">22</string>
+
+    <!-- Map server REST endpoints -->
+    <string name="server_endpoint">http://172.26.4.51:8080/mapserver</string>
+    <string name="server_endpoint_mapList">map_list</string>
+
+    <!-- tracker config -->
+    <integer name="tracker_num_neighbours">5</integer>
+    <integer name="tracker_outlier_medianThresholdFactor">2</integer>
+    <integer name="tracker_scanbuffer_maxage">6000</integer>
+    <!-- NOTE: The higher this value is, the longer it will take for the user's position to reach the -->
+    <!-- user's actual position. -->
+    <integer name="tracker_history_size">5</integer>
+
+    <integer name="localisationUpdateRate">200</integer>
+    <integer name="accumulateDeltaUpdateRate">50</integer>
+
+    <!-- sensitivity for detecting movement by means of linear acceleration measurements in cm/s²-->
+    <integer name="movement_detection_sensitivity">150</integer>
+    <!-- simple motion model in cm/s -->
+    <integer name="motionModel">150</integer>
+
+    <!-- weight for compass low pass filters, should be in the interval of 0...1 times 100 because integer -->
+    <integer name="compass_low_pass_filter_weight">50</integer>
+    <integer name="magnetometer_low_pass_filter_weight">100</integer>
+    <integer name="accelerometer_low_pass_filter_weight">100</integer>
+
+    <!-- configuration of the particle filter -->
+    <integer name="numberParticles">100</integer>
+    <integer name="sigmaInit">100000</integer>
+    <integer name="sigmaAction">10000</integer>
+    <integer name="sigmaSensor">10000</integer>
+
+    <!-- localization mode, PF: 1, Wifi: 2, Dead Reckoning: 3 -->
+    <integer name="localizationMode">1</integer>
+
+</resources>

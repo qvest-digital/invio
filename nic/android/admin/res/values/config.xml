@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="map_provider_url_schema">
+        <!--http://87.230.17.161/maps/{mapname}/tiles/{zoom}/{x}/{y}{ending}-->
+        http://172.26.4.51:8080/maps/{mapname}/tiles/{zoom}/{x}/{y}{ending}
+    </string>
+
+    <integer name="map_tile_size_px">256</integer>
+    <string name="map_default_name">JOSMTest</string>
+    <string name="map_file_ending">.jpg</string>
+
+    <!-- Map server REST endpoints -->
+    <!--<string name="server_endpoint">http://87.230.17.161/mapserver</string>-->
+    <string name="server_endpoint">http://172.26.4.51:8080/mapserver</string>
+    <string name="server_endpoint_mapList">map_list</string>
+
+</resources>

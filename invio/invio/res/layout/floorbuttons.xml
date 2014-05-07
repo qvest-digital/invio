@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<merge xmlns:android="http://schemas.android.com/apk/res/android">
+    <ToggleButton
+            style="?android:attr/buttonStyleSmall"
+            android:visibility="invisible"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textOff="EG"
+            android:textOn="EG"
+            android:onClick="onFloorButtonClick"
+            android:id="@+id/button_floor0" android:layout_alignTop="@+id/osmmapview"
+            android:layout_alignRight="@+id/osmmapview" android:layout_marginTop="10dp"
+            android:layout_alignLeft="@+id/button_autodetect"
+            android:background="@drawable/toggle"/>
+    <ToggleButton
+            style="?android:attr/buttonStyleSmall"
+            android:visibility="invisible"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textOff="OG"
+            android:textOn="OG"
+            android:onClick="onFloorButtonClick"
+            android:id="@+id/button_floor1" android:layout_below="@+id/button_floor0"
+            android:layout_alignParentRight="true" android:layout_marginTop="10dp"
+            android:layout_alignLeft="@+id/button_autodetect"
+            android:background="@drawable/toggle"/>
+    <ImageButton
+            style="?android:attr/buttonStyleSmall"
+            android:visibility="invisible"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:onClick="onFloorButtonClick"
+            android:id="@+id/button_autodetect" android:layout_below="@+id/button_floor1" android:layout_alignRight="@+id/osmmapview" android:layout_marginTop="10dp"
+            android:background="@android:drawable/ic_menu_mylocation"/>
+</merge>

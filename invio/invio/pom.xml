@@ -1,0 +1,169 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <name>invio - Linuxtag App</name>
+    <artifactId>invio-linuxtag</artifactId>
+    <version>0.6.14-SNAPSHOT</version>
+    <packaging>apk</packaging>
+
+    <parent>
+        <groupId>de.tarent.invio</groupId>
+        <artifactId>android-parent</artifactId>
+        <version>0.6.14-SNAPSHOT</version>
+    </parent>
+
+    <dependencies>
+
+        <!-- NIC dependencies -->
+        <dependency>
+            <groupId>de.tarent.nic</groupId>
+            <artifactId>android-base</artifactId>
+            <version>${nic.version}</version>
+            <type>apklib</type>
+	    <exclusions>
+		<exclusion>
+			<groupId>de.tarent.nic</groupId>
+			<artifactId>mapserver-client-lib</artifactId>
+		</exclusion>
+	    </exclusions>
+        </dependency>
+    </dependencies>
+
+    <build>
+        <finalName>${project.artifactId}</finalName>
+        <testResources>
+            <testResource>
+                <directory>${project.basedir}/src/test/resources</directory>
+            </testResource>
+        </testResources>
+        <plugins>
+            <plugin>
+                <groupId>com.jayway.maven.plugins.android.generation2</groupId>
+                <artifactId>android-maven-plugin</artifactId>
+                <extensions>true</extensions>
+            </plugin>
+        </plugins>
+    </build>
+
+    <profiles>
+        <profile>
+            <id>release</id>
+            <build>
+                <plugins>
+                    <plugin>
+                        <groupId>org.apache.maven.plugins</groupId>
+                        <artifactId>maven-jarsigner-plugin</artifactId>
+                        <executions>
+
+                            <execution>
+                                <id>sign-application-apk</id>
+                                <goals>
+                                    <goal>sign</goal>
+                                    <goal>verify</goal>
+                                </goals>
+                                <phase>package</phase>
+                                <inherited>true</inherited>
+                                <configuration>
+                                    <removeExistingSignatures>true</removeExistingSignatures>
+                                    <archiveDirectory />
+                                    <includes>
+                                        <include>${project.build.directory}/${project.artifactId}-signed-aligned-${project.version}.apk</include>
+                                    </includes>
+                                    <!-- the needed parameters are passed as command line arguments and build parameters
+                                        from jenkis -->
+                                    <keystore>${sign.keystore}</keystore>
+                                    <alias>${sign.alias}</alias>
+                                    <storepass>${env.sign.storepass}</storepass>
+                                    <keypass>${env.sign.keypass}</keypass>
+                                    <verbose>true</verbose>
+                                    <arguments>
+                                        <argument>-sigalg</argument>
+                                        <argument>MD5withRSA</argument>
+                                        <argument>-digestalg</argument>
+                                        <argument>SHA1</argument>
+                                    </arguments>
+                                </configuration>
+                            </execution>
+                        </executions>
+                    </plugin>
+                    <plugin>
+                        <groupId>com.jayway.maven.plugins.android.generation2</groupId>
+                        <artifactId>android-maven-plugin</artifactId>
+                        <inherited>true</inherited>
+                        <configuration>
+                            <sign>
+                                <debug>false</debug>
+                            </sign>
+                            <zipalign>
+                                <skip>false</skip>
+                                <!-- strictly necessary as the default is 'true' -->
+                                <verbose>true</verbose>
+                                <inputApk>${project.build.directory}/${project.artifactId}.apk</inputApk>
+                                <outputApk>
+                                    ${project.build.directory}/${project.artifactId}-signed-aligned-${project.version}.apk
+                                </outputApk>
+                            </zipalign>
+                            <!-- set the application to non debuggable for release -->
+                            <manifest>
+                                <debuggable>false</debuggable>
+                                <!-- It is not allowed to publish an apk with the same versionCode twice in play store.
+                                    Therefore using the pom project.version as versionCode. -->
+                                <versionCodeUpdateFromVersion>true</versionCodeUpdateFromVersion>
+                            </manifest>
+                        </configuration>
+                        <executions>
+                            <!-- the androidManifest.xml will be updated the refelct hte actual	version the are building -->
+                            <execution>
+                                <id>manifestUpdate</id>
+                                <phase>process-resources</phase>
+                                <goals>
+                                    <goal>manifest-update</goal>
+                                </goals>
+                            </execution>
+                            <execution>
+                                <id>alignApk</id>
+                                <phase>package</phase>
+                                <goals>
+                                    <goal>zipalign</goal>
+                                </goals>
+                            </execution>
+                            <execution>
+								<id>lint</id>
+								<goals>
+									<goal>lint</goal>
+								</goals>
+								<phase>install</phase>
+							</execution>
+                        </executions>
+                    </plugin>
+                    <plugin>
+                        <groupId>org.codehaus.mojo</groupId>
+                        <artifactId>build-helper-maven-plugin</artifactId>
+                        <version>1.8</version>
+                        <configuration>
+                            <artifacts>
+                                <artifact>
+                                    <file>
+                                        ${project.build.directory}/${project.artifactId}-signed-aligned-${project.version}.apk
+                                    </file>
+                                    <type>apk</type>
+                                    <classifier>signed-aligned</classifier>
+                                </artifact>
+                            </artifacts>
+                        </configuration>
+                        <executions>
+                            <execution>
+                                <id>attach-signed-aligned</id>
+                                <phase>package</phase>
+                                <goals>
+                                    <goal>attach-artifact</goal>
+                                </goals>
+                            </execution>
+                        </executions>
+                    </plugin>
+                </plugins>
+            </build>
+        </profile>
+    </profiles>
+</project>

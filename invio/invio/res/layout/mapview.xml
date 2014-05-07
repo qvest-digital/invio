@@ -1,0 +1,29 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:id="@+id/maplayout"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent"
+              android:orientation="vertical"
+              android:focusable="true"
+              android:focusableInTouchMode="true">
+    <!--
+    	Dies ist nur ein PLatzhalter für die ID der eigentlichen MapView
+    	Die MapView wird später programatisch hinzugefügt.
+     -->
+    <AutoCompleteTextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/mapview_searchview"
+            android:hint="@string/searchbar_hint"
+            android:singleLine="true"
+            android:imeOptions="actionSearch"
+            android:layout_gravity="center_horizontal"/>
+    <org.osmdroid.views.MapView
+            xmlns:android="http://schemas.android.com/apk/res/android"
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:id="@+id/osmmapview"
+            android:layout_below="@+id/mapview_searchview">
+    </org.osmdroid.views.MapView>
+    <include layout="@layout/floorbuttons"
+             android:layout_alignTop="@+id/osmmapview" android:layout_alignRight="@+id/osmmapview"/>
+</RelativeLayout>

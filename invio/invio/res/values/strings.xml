@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">Indoor-Navigation</string>
+
+    <string name="linuxtag_intent_key_location_id">location_id</string>
+
+    <!-- GENERAL TEXT ELEMENTS -->
+    <string name="searchbar_hint">Vortrags- und Austellersuche</string>
+
+    <string name="dialog_button_cancel">Abbrechen</string>
+    <string name="dialog_button_ok">OK</string>
+    <string name="dialog_button_no">NEIN</string>
+    <string name="dialog_button_yes">JA</string>
+
+    <!-- VERSION TEXT ELEMENTS -->
+    <string name="version_title">Version</string>
+    <string name="version">0.6.13</string>
+    <string name="build_id">2014-05-07_12-28-57</string>
+    <string name="close_version_dialog">Schließen</string>
+
+    <!--  -->
+    <string name="namespace_key_group_name">namespace_group_name</string>
+    <string name="namespace_key_map_name">namespace_map_name</string>
+    <string name="namespace_key_short_name">namespace_short_name</string>
+    <string name="home_map_data_failed_toast">Getting of some map data failed - some maps may not work.</string>
+    <string name="zip_download_failed">Karteninformationen konnten nicht geladen werden.</string>
+    <string name="map_activity_intent_group_data_path_key">groupDataDirPath</string>
+    <string name="wifi_not_enabled_dialog_title">WLAN deaktiviert</string>
+    <string name="wifi_not_enabled_dialog_message">Bitte aktivieren Sie das WLAN. Die Indoor-Navigation funktioniert nicht ohne aktiviertes WLAN.</string>
+    <string name="room_dialog_current_talk_title">Aktueller Vortrag:</string>
+
+</resources>

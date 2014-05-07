@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">admin</string>
+
+    <string name="dialog_fingerprint_title">Fingerprint:</string>
+    <string name="dialog_fingerprint_button_ok">OK</string>
+    <string name="dialog_fingerprint_button_delete">Löschen</string>
+
+    <string name="create_fingerprint_button">Fingerprint erstellen</string>
+
+    <string name="menu_dev">Settings</string>
+    <string name="menu_track_me">Toggle Tracking</string>
+    <string name="menu_upload_fingerprints">Fingerprints speichern</string>
+
+    <!-- Map Matching menu -->
+    <string name="menu_map_matching">Map Matching</string>
+    <string name="menu_toggle_wayoverlay">wayoverlay</string>
+    <string name="menu_map_matching_none">no matching</string>
+    <string name="menu_map_matching_simpleWaySnap">simple way snap</string>
+
+    <!-- Outlier debug menu -->
+    <string name="menu_outlier">Outlier</string>
+    <string name="menu_outlier_no_detection">no detection</string>
+    <string name="menu_outlier_cme">cme (2)</string>
+    <string name="menu_outlier_plasmona">plasmona</string>
+
+    <!-- Statistic filter debug menu -->
+    <string name="menu_filter">Filter</string>
+    <string name="menu_filter_no_filter">no filter</string>
+    <string name="menu_filter_median">median</string>
+    <string name="menu_filter_average">average</string>
+
+    <!-- VERSION TEXT ELEMENTS -->
+    <string name="version_title">Version</string>
+    <string name="close_version_dialog">Close</string>
+
+    <string name="actions_version">Version</string>
+
+</resources>

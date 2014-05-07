@@ -1,0 +1,205 @@
+package de.tarent.nic.tracker.outlier;
+
+import de.tarent.nic.entities.NicGeoPoint;
+import de.tarent.nic.tracker.geopoint.PointFactory;
+import de.tarent.nic.tracker.geopoint.PointList;
+
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
+import java.util.Set;
+
+
+/**
+ * Outlier detection and elimination used in plasmona project.
+ * The generic parameter T is the type of points with which we will work. Needs to be the same for input and output.
+ * @param <T> the concrete type of points used in this eliminator.
+ */
+public class PlasmonaOutlierEliminator<T extends NicGeoPoint> implements OutlierEliminator<T> {
+
+    private PointFactory<T> pointFactory;
+
+    /**
+     * Construct a new PlasmonaOutlierEliminator.
+     *
+     * @param factory is a the PointFactory which is to be used for the creation of new NicGeoPoints
+     */
+    public PlasmonaOutlierEliminator(PointFactory factory) {
+        this.pointFactory = factory;
+    }
+
+    /**
+     * Cluster the candidates by removing any outliers. The outliers might be fingerprints at the other end of the
+     * building which, by chance, look similar to fingerprints near our actual position. But they are irrelevant and
+     * should not distort our interpolation between the true neighbours.
+     *
+     * @param candidateSet the set with n closest neighbours/fingerprints
+     * @return Set<NicGeoPoint> the reduced set, if any outliers were found
+     */
+    @Override
+    public Set<T> removeOutliers(final Set<T> candidateSet) {
+
+        // The candidates are those points, that were found to be the n closest neighbours/fingerprints.
+        // If there's only one or two of them then we don't want to remove anything. The concept of outliers wouldn't
+        // make sense in that case (which of two points is the "correct" one, and which one is the outlier?).
+        if (candidateSet.size() <= 2) {
+            return candidateSet;
+        }
+
+        final PointList candidates = new PointList(pointFactory, candidateSet);
+
+        final List<PointDoublePair> centroidDistances = calculateCentroidDistances(candidates);
+
+        final List<PointDoublePair> medianDistanceDivergences = calculateDistanceDivergences(centroidDistances);
+
+        removeOutliers(medianDistanceDivergences, candidateSet);
+
+        return candidateSet;
+    }
+
+    /**
+     * For each candidate calculate and store its distance to the centroid.
+     * If we would sort the distance-map then the candidates closest to the center of the cluster would come first. The
+     * potential outliers would then be located at the end.
+     * @param candidates the neighbour-fingerprint positions
+     * @return a List of PointDoublePair, where the point is the fingerprint-position and the double is the
+     *         distance to the centroid of all the positions.
+     */
+    private List<PointDoublePair> calculateCentroidDistances(final PointList<T> candidates) {
+        final NicGeoPoint centroid = candidates.getMedianPoint();
+        final List<PointDoublePair> centroidDistances = new ArrayList<PointDoublePair>();
+
+        for (T point : candidates) {
+            final PointDoublePair pdp = new PointDoublePair(point, point.calculateDistanceTo(centroid));
+            centroidDistances.add(pdp);
+        }
+
+        return centroidDistances;
+    }
+
+    /**
+     * The medianDistanceDivergences-list stores, for each candidate, the absolute difference between its own
+     * centroid-distance and the median-centroid-distance. That means that candidates far away from the cluster
+     * will have a large medianDistanceDivergence. And the candidates that are much closer to the centroid than
+     * the median will also have a large medianDistanceDivergence.
+     * @param centroidDistances a list of points together with their distance
+     * @return a List of PointDoublePair, where the point is the fingerprint-position and the double is the
+     *         absolute difference between this points distance to the centroid and the median of the distances of
+     *         all the fingerprint-positions.
+     */
+    private List<PointDoublePair> calculateDistanceDivergences(final List<PointDoublePair> centroidDistances) {
+        final List<PointDoublePair> medianDistanceDivergences = new ArrayList<PointDoublePair>();
+        final double distanceMedian = median(centroidDistances);
+
+        for (int j = 0; j < centroidDistances.size(); j++) {
+            final PointDoublePair medianPdp = centroidDistances.get(j);
+            final PointDoublePair pdp = new PointDoublePair(medianPdp.point, Math.abs(medianPdp.d - distanceMedian));
+            medianDistanceDivergences.add(pdp);
+        }
+
+        return medianDistanceDivergences;
+    }
+
+    /**
+     * Remove those candidates from the set that are outliers, according to the list of medianDistanceDivergences.
+     * @param medianDistanceDivergences the list that was generated by calculateDistanceDivergences (how much the
+     *                                  centroid-distance of each point diverges from the median centroid-distance).
+     * @param candidateSet the point-set from which the outliers are to be removed.
+     */
+    private void removeOutliers(final List<PointDoublePair> medianDistanceDivergences,
+                               final Set<T> candidateSet) {
+        // Now we get the median divergence from the median distance... that can probably be seen as a measure of
+        // how dense our cluster is. (Although a ring of points would have a very low value here as well, because
+        // all points would have the same distance to the centroid and therefore the same divergence (zero) from
+        // the median distance.)
+        final double absvaluemedian = median(medianDistanceDivergences);
+
+        // These will be values that describe the minimal and maximal divergence from the absvaluemedian among
+        // all the candidates. They are not distances, but quotients (factors?).
+        // (We rely on the median-method to have sorted the medianDistanceDivergences!)
+        final double min = medianDistanceDivergences.get(0).d / absvaluemedian;
+        final double max = medianDistanceDivergences.get(medianDistanceDivergences.size()-1).d / absvaluemedian;
+
+        if ((max - min) != 0){
+            for (int h = 0; h < medianDistanceDivergences.size(); h++) {
+                // The tricky part :-) Throw out the candidates that aren't close enough to the cluster.
+                // I don't understand the formula, though. Too much medianism ;-)
+                final double outlierScore = ((medianDistanceDivergences.get(h).d / absvaluemedian) - min) / (max - min);
+                if (outlierScore > 0.8) {
+                    candidateSet.remove(medianDistanceDivergences.get(h).point);
+                }
+            }
+        }
+    }
+
+    /**
+     * Find the median of all the "d"s in a list of PointDoublePair. Also, the list will be sorted.
+     * @param list a list of PointDoublePair from which only the d will be used.
+     * @return the median value
+     */
+    private double median(final List<PointDoublePair> list) {
+        Collections.sort(list);
+        final int centerElement = list.size() / 2;
+        double median;
+        if (list.size() % 2 == 1) {
+            median = list.get(centerElement).d;
+        } else {
+            median = 0.5f * (list.get(centerElement).d + list.get(centerElement - 1).d);
+        }
+        return median;
+    }
+
+
+    /**
+     * This class stores a point together with some double-value d. It is used to sort the points by d, which can
+     * be a distance, or median-divergence or whatever. We just don't want to lose the reference to the point by
+     * sorting.
+     * Note: it should not be put in Maps or similar structures because of strange equals implementation (which, like
+     *       compareTo, is only dependent on d, and not the point). It will probably not work as a map-key! We use
+     *       only lists, which should not care about equals.
+     */
+    private static class PointDoublePair implements Comparable<PointDoublePair> {
+        private final NicGeoPoint point;
+        private final Double d;
+
+        public PointDoublePair(final NicGeoPoint point, final Double d) {
+            this.point = point;
+            this.d = d;
+        }
+
+        @Override
+        public int compareTo(final PointDoublePair other) {
+            if (this.d > other.d) {
+                return 1;
+            }
+            if (this.d < other.d) {
+                return -1;
+            }
+            return 0;
+        }
+
+        @Override
+        public boolean equals(final Object other) {
+            if ((other == null) || (!(other instanceof PointDoublePair))) {
+                return false;
+            }
+
+            if (other == this) {
+                return true;
+            }
+
+            return this.d.equals(((PointDoublePair)other).d);
+        }
+
+        /**
+         * Dummy-hashCode! This class cannot be used in hashed collections!
+         * @return 0
+         */
+        @Override
+        public int hashCode() {
+            return 0;
+        }
+    }
+
+
+}

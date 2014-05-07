@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+    <properties>
+        <admin.version>0.2-SNAPSHOT</admin.version>
+    </properties>
+
+    <parent>
+        <groupId>de.tarent.nic</groupId>
+        <artifactId>android-parent</artifactId>
+        <version>0.2-SNAPSHOT</version>
+    </parent>
+
+    <artifactId>admin-it</artifactId>
+    <version>0.2-SNAPSHOT</version>
+    <packaging>apk</packaging>
+    <name>admin-it - Integration tests</name>
+
+    <scm>
+        <connection>scm:git:ssh://maven@evolvis.org/scmrepos/git/nic/adminapp.git</connection>
+        <url>https://evolvis.org/projects/nic/</url>
+    </scm>
+
+    <dependencies>
+        <!-- TODO: This dependency should be removed after the next successful build - damlin 05.11.2013 @ 16:49 -->
+        <dependency>
+            <groupId>com.google.android</groupId>
+            <artifactId>android-test</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>de.tarent.nic</groupId>
+            <artifactId>admin</artifactId>
+            <type>apk</type>
+            <version>${admin.version}</version>
+            <scope>provided</scope>
+        </dependency>
+        <dependency>
+            <groupId>de.tarent.nic</groupId>
+            <artifactId>admin</artifactId>
+            <type>jar</type>
+            <version>${admin.version}</version>
+            <scope>provided</scope>
+        </dependency>
+    </dependencies>
+
+    <build>
+        <finalName>${project.artifactId}</finalName>
+        <plugins>
+            <plugin>
+                <groupId>com.jayway.maven.plugins.android.generation2</groupId>
+                <artifactId>android-maven-plugin</artifactId>
+                <configuration>
+                    <test>
+                        <skip>true</skip>
+                        <!--<skip>true|false|auto</skip> -->
+                        <!--<instrumentationPackage>packageName</instrumentationPackage> -->
+                        <!--<instrumentationRunner>className</instrumentationRunner> -->
+                        <!--<debug>true|false</debug> -->
+                        <!--<coverage>true|false</coverage> -->
+                        <!--<logonly>true|false</logonly> avd -->
+                        <!--<testsize>small|medium|large</testsize> -->
+                        <createReport>true</createReport>
+                        <!--<classes> -->
+                        <!--<class>your.package.name.YourTestClass</class> -->
+                        <!--</classes> -->
+                        <!--<packages> -->
+                        <!--<package>your.package.name</package> -->
+                        <!--</packages> -->
+                    </test>
+                </configuration>
+                <extensions>true</extensions>
+            </plugin>
+        </plugins>
+    </build>
+</project>

@@ -1,0 +1,24 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                android:id="@+id/maplayout"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+    <!--
+    	Dies ist nur ein PLatzhalter für die ID der eigentlichen MapView
+    	Die MapView wird später programatisch hinzugefügt.
+     -->
+
+    <org.osmdroid.views.MapView
+            xmlns:android="http://schemas.android.com/apk/res/android"
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:id="@+id/osmmapview">
+    </org.osmdroid.views.MapView>
+
+    <Button android:id="@+id/create_fingerprint_button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:text="@string/create_fingerprint_button"
+            android:onClick="toggleFingerprintMode"/>
+
+</RelativeLayout>

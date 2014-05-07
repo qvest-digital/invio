@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Design Farben -->
+    <color name="white">#FFFFFF</color>
+    <color name="creme">#EBE1D7</color>
+    <color name="dark">#534741</color>
+
+    <!-- Fachliche Bezeichnungen -->
+    <color name="focussed">@color/white</color>
+    <color name="normal">@color/creme</color>
+    <color name="pressed">@color/dark</color>
+
+    <!-- tarent Farben -->
+    <color name="tarent_hellrot">#E16969</color>
+    <color name="tarent_rot">#CC0000</color>
+    <color name="tarent_dunkelrot">#660000</color>
+    <color name="tarent_hellgrau">#EBEBEB</color>
+    <color name="tarent_mittelgrau">#B4B4B4</color>
+    <color name="tarent_dunkelgrau">#7D7D7D</color>
+    <color name="tarent_schwarzgrau">#414141</color>
+
+    <color name="linuxtag_gelb">#BBFABC04</color>
+    <color name="linuxtag_grau">#BBB4B4B4</color>
+
+
+    <color name="sum">@color/tarent_rot</color>
+
+</resources>

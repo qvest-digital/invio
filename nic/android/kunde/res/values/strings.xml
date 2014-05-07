@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">Indoor-Navigation</string>
+
+    <!-- Menu ressources. -->
+    <string name="feedback_menu">Feedback</string>
+    <string name="schedule_menu">Schedule</string>
+    <string name="imprint_menu">Imprint</string>
+
+    <!-- Texts regarding Email feedback. -->
+    <string name="feedback_chooser">Send feedback via...</string>
+    <string name="feedback_email_address">info@tarent.de</string>
+    <string name="feedback_subject">Feedback for the Indoor-Navigation App</string>
+    <string name="feedback_body">Hello,\n\n
+        Please answer the following questions:\n\n
+        1. How was your overall impression of our App (1 - very good, 6 - very bad)?\n
+        2. How would you rate the usability of our App (1 - very good, 6 - very bad)?\n
+        3. How would you rate the tracking precision (1 - very good, 6 - very bad)?\n
+        4. What mobile phone (eg. Nexus 4) are you using?\n\n
+        Additional feedback:\n\n</string>
+
+    <!-- Texts regarding schedule. -->
+    <string name="schedule_chooser">Open schedule via...</string>
+    <string name="schedule_app_package_name">nerd.tuxmobil.fahrplan.congress</string>
+
+    <!-- Texts regarding imprint. -->
+    <string name="imprint_chooser">Open imprint via...</string>
+    <string name="imprint_uri">https://www.tarent.de/index.php/menu-container/impressum</string>
+
+</resources>

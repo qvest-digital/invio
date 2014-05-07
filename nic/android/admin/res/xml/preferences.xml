@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <PreferenceCategory android:title="@string/pref_localization">
+        <ListPreference
+                android:key="@string/key_pref_localizationMethodList"
+                android:title="@string/pref_localizationMethodList_title"
+                android:summary="@string/pref_localizationMethodList_summary"
+                android:dialogTitle="@string/pref_localizationMethodList_dialogTitle"
+                android:entries="@array/localizationMethodListEntries"
+                android:entryValues="@array/localizationMethodListValues"
+                android:defaultValue="@string/localizationMethodParticlefilter" />
+        <SwitchPreference
+                android:key="@string/key_pref_deadReckoning_lowPassToggle"
+                android:switchTextOff="@string/settings_switch_general_OFF"
+                android:switchTextOn="@string/settings_switch_general_ON"
+                android:title="@string/pref_deadReckoning_lowPassToggle_title"/>
+        <SwitchPreference
+                android:key="@string/key_pref_showparticles"
+                android:switchTextOff="@string/settings_switch_general_OFF"
+                android:switchTextOn="@string/settings_switch_general_ON"
+                android:title="@string/pref_showparticles_title"/>
+    </PreferenceCategory>
+
+    <PreferenceCategory android:title="@string/pref_mapMatching">
+        <SwitchPreference
+                android:key="@string/key_pref_mapMatching_toggle"
+                android:switchTextOff="@string/settings_switch_general_OFF"
+                android:switchTextOn="@string/settings_switch_general_ON"
+                android:title="@string/pref_mapMatching_toggle_title"/>
+        <SwitchPreference
+                android:key="@string/key_pref_mapMatching_showWayOverlay"
+                android:switchTextOff="@string/settings_switch_general_OFF"
+                android:switchTextOn="@string/settings_switch_general_ON"
+                android:title="@string/pref_mapMatching_showWayOverlay"/>
+    </PreferenceCategory>
+
+    <PreferenceCategory android:title="@string/pref_outlierDetection">
+        <SwitchPreference
+                android:key="@string/key_pref_outlierEnabled"
+                android:switchTextOff="@string/settings_switch_general_OFF"
+                android:switchTextOn="@string/settings_switch_general_ON"
+                android:title="@string/pref_outlierEnabled_title"/>
+        <ListPreference
+                android:dependency="@string/key_pref_outlierEnabled"
+                android:key="@string/key_pref_outlierAlgorithmList"
+                android:title="@string/pref_outlierAlgorithmList_title"
+                android:summary="@string/pref_outlierAlgorithmList_summary"
+                android:dialogTitle="@string/pref_outlierAlgorithmList_dialogTitle"
+                android:entries="@array/outlierAlgorithmListEntries"
+                android:entryValues="@array/outlierAlgorithmListValues"
+                android:defaultValue="@string/outlierAlgorithmCME2" />
+    </PreferenceCategory>
+
+    <PreferenceCategory android:title="@string/pref_filter">
+        <SwitchPreference
+                android:key="@string/key_pref_filteringEnabled"
+                android:switchTextOff="@string/settings_switch_general_OFF"
+                android:switchTextOn="@string/settings_switch_general_ON"
+                android:title="@string/pref_filteringEnabled_title"/>
+        <ListPreference
+                android:dependency="@string/key_pref_filteringEnabled"
+                android:key="@string/key_pref_filterAlgorithmList"
+                android:title="@string/pref_filterAlgorithmList_title"
+                android:summary="@string/pref_filterAlgorithmList_summary"
+                android:dialogTitle="@string/pref_filterAlgorithmList_title"
+                android:entries="@array/filteringAlgorithmListEntries"
+                android:entryValues="@array/filteringAlgorithmListValues"
+                android:defaultValue="@string/filterAlgorithmMedian" />
+    </PreferenceCategory>
+</PreferenceScreen>
